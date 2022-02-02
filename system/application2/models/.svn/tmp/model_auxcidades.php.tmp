@@ -1,0 +1,12 @@
+<?php
+class Model_auxcidades extends Model {
+	
+	public function getAuxCidades(){
+		$this->db->order_by("Descricao", "asc");
+		$query=$this->db->get('AuxCidades');
+		if($query->num_rows()>0){
+			return $query->result_array();
+		}
+	}
+		
+}

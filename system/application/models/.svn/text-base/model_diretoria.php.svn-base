@@ -1,0 +1,11 @@
+<?php
+class Model_diretoria extends Model {
+	public function getDiretorias(){
+		$this->db->where('Diretoria', 1);
+		$this->db->order_by("Descricao", "asc");
+		$query=$this->db->get('AuxOrganizacional');
+		if($query->num_rows()>0){
+			return $query->result_array();
+		}
+	}
+}

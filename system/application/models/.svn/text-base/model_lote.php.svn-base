@@ -1,0 +1,53 @@
+<?php
+class Model_lote extends Model {
+
+	function detail(){
+		$query = $this->db->get_where('Lotes', array('Id' => $this->uri->segment(4)));
+		return $query->result();
+	}
+
+	function detail2(){
+		$query = $this->db->get_where('Lotes', array('Id' => $this->uri->segment(3)));
+		return $query->result();
+	}	
+	
+	function get_records(){
+		$query = $this->db->get('Lotes');
+		return $query->result();
+	}
+		
+	function listLote(){
+		$query = $this->db->order_by("LoteNr", "asc");
+		$query = $this->db->get_where('Lotes', array('ProcessoId' => $this->uri->segment(3)));
+		return $query->result();
+	}
+
+	function add_record($data){
+		$this->db->insert('Lotes', $data);
+		return;
+	}
+
+	function delete_row(){
+		$this->db->where('id', $this->uri->segment(3));
+		$this->db->delete('Lotes');
+		$redirecionamento = base_url()."lote/index/".$this->uri->segment(4);
+		redirect($redirecionamento);
+	}
+	
+	function lote_numero($loteId){
+		$query = $this->db->get_where('Lotes', array('Id' => $loteId));
+		return $query->result();
+	}	
+
+	function update_record($data,$id){
+		$this->db->where('id', $id);
+		$this->db->update('Lotes', $data);
+	}	
+
+	function somaobras($id) {
+		$sql = "select Lotes.*, dbo.SomaObras(id) as SomaObras from Lotes where id = $id";
+		$query = $this->db->query($sql);
+		return $query->result(); 		
+	}
+
+}

@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/sgo/!svn/ver/331/system/application/models
+END
+model_auxcidades.php
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/sgo/!svn/ver/324/system/application/models/model_auxcidades.php
+END
+model_situacaoobrarelatorio.php
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/sgo/!svn/ver/324/system/application/models/model_situacaoobrarelatorio.php
+END
+model_situacaoloterelatorio.php
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/sgo/!svn/ver/324/system/application/models/model_situacaoloterelatorio.php
+END
+model_movimentacaogeralrelatorio.php
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/sgo/!svn/ver/331/system/application/models/model_movimentacaogeralrelatorio.php
+END
+model_auxcategorias.php
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/sgo/!svn/ver/329/system/application/models/model_auxcategorias.php
+END
+model_relatorioLotes.php
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/sgo/!svn/ver/331/system/application/models/model_relatorioLotes.php
+END
+model_resumofinanceiro.php
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/sgo/!svn/ver/324/system/application/models/model_resumofinanceiro.php
+END

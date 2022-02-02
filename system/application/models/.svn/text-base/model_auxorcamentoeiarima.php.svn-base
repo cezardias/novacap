@@ -1,0 +1,10 @@
+<?php
+class Model_AuxOrcamentoEIARIMA extends Model {
+	public function getAuxOrcamentoEIARIMA(){
+		$this->db->order_by("Descricao", "asc");
+		$query=$this->db->get('AuxOrcamentoEIARIMA');
+		if($query->num_rows()>0){
+			return $query->result_array();
+		}
+	}
+}

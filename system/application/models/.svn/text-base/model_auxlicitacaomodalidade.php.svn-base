@@ -1,0 +1,10 @@
+<?php
+class Model_AuxLicitacaoModalidade extends Model {
+	public function getAuxLicitacaoModalidade(){
+		$this->db->order_by("Descricao", "asc");
+		$query=$this->db->get('AuxLicitacaoModalidade');
+		if($query->num_rows()>0){
+			return $query->result_array();
+		}
+	}
+}

@@ -1,0 +1,117 @@
+/*
+Author: Craig Erskine
+Description: Dynamic Menu System - Horizontal/Vertical
+*/
+
+.barraMenu {
+	width: 100%;
+	background: #f0f0f0;
+	/* background-image:url('../img/bkgMenu2.gif'); */ 
+	height: 35px;
+	padding: 0;
+}
+
+ul#navmenu-h {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	position: relative;
+	z-index:1; 
+}
+
+ul#navmenu-h ul {
+	width: 160px; /* Sub Menu Width */
+	margin: 0;
+	list-style: none;
+	display: none;
+	position: absolute;
+	top: 100%;
+	left: 0;
+}
+
+ul#navmenu-h ul ul,ul#navmenu-h ul ul ul {
+	top: 0;
+	left: 100%;
+}
+
+ul#navmenu-h li {
+	float: left;
+	display: inline;
+	position: relative;
+	z-index:1000;
+}
+
+ul#navmenu-h ul li {
+	width: 100%;
+	display: block;
+}
+
+/* Root Menu */
+ul#navmenu-h a {
+	border-top: 1px solid #FFF;
+	border-right: 1px solid #FFF;
+	padding: 7px;
+	float: left;
+	display: block;
+	background: #f0f0f0;
+	/*background-image:url('../img/bkgMenu2.gif');*/
+	color: #666;
+	font: bold 11px Arial, sans-serif;
+	text-decoration: none;
+	height: 20px;
+	/*original 1%height: 20px;*/
+}
+
+/* Root Menu Hover Persistence */
+ul#navmenu-h a:hover,ul#navmenu-h li:hover a,ul#navmenu-h li.iehover a {
+	background: #f0f0f0;
+	color: #444;
+}
+
+/* 2nd Menu */
+ul#navmenu-h li:hover li a,ul#navmenu-h li.iehover li a {
+	float: none;
+	background: #efefef;
+	color: #444;
+}
+
+/* 2nd Menu Hover Persistence */
+ul#navmenu-h li:hover li a:hover,ul#navmenu-h li:hover li:hover a,ul#navmenu-h li.iehover li a:hover,ul#navmenu-h li.iehover li.iehover a
+	{
+	background: #e0e0e0;
+}
+
+/* 3rd Menu */
+ul#navmenu-h li:hover li:hover li a,ul#navmenu-h li.iehover li.iehover li a
+	{
+	background: #e0e0e0;
+}
+
+/* 3rd Menu Hover Persistence */
+ul#navmenu-h li:hover li:hover li a:hover,ul#navmenu-h li:hover li:hover li:hover a,ul#navmenu-h li.iehover li.iehover li a:hover,ul#navmenu-h li.iehover li.iehover li.iehover a
+	{
+	background: #e9e9e9;
+}
+
+/* 4th Menu */
+ul#navmenu-h li:hover li:hover li:hover li a,ul#navmenu-h li.iehover li.iehover li.iehover li a
+	{
+	background: #ff6600;
+}
+
+/* 4th Menu Hover */
+ul#navmenu-h li:hover li:hover li:hover li a:hover,ul#navmenu-h li.iehover li.iehover li.iehover li a:hover
+	{
+	background: #c0c0c0;
+}
+
+/* Hover Function - Do Not Move */
+ul#navmenu-h li:hover ul ul,ul#navmenu-h li:hover ul ul ul,ul#navmenu-h li.iehover ul ul,ul#navmenu-h li.iehover ul ul ul
+	{
+	display: none;
+}
+
+ul#navmenu-h li:hover ul,ul#navmenu-h ul li:hover ul,ul#navmenu-h ul ul li:hover ul,ul#navmenu-h li.iehover ul,ul#navmenu-h ul li.iehover ul,ul#navmenu-h ul ul li.iehover ul
+	{
+	display: block;
+}

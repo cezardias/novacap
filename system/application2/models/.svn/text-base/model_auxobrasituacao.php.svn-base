@@ -1,0 +1,10 @@
+<?php
+class Model_auxObraSituacao extends Model {
+	public function getAuxObraSituacao(){
+		$this->db->order_by("Descricao", "asc");
+		$query=$this->db->get('AuxObraSituacao');
+		if($query->num_rows()>0){
+			return $query->result_array();
+		}
+	}
+}

@@ -1,0 +1,10 @@
+<?php
+class Model_auxAditivoTipo extends Model {
+	public function getAuxAditivoTipo(){
+		$this->db->order_by("Descricao", "asc");
+		$query=$this->db->get('AuxAditivoTipo');
+		if($query->num_rows()>0){
+			return $query->result_array();
+		}
+	}
+}

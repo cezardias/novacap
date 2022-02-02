@@ -1,0 +1,31 @@
+<?php
+class Model_situacaoloterelatorio extends Model {
+
+	function report($setorresponsavel,$fiscal,$regiaoadministrativa,$processo,$loteNr,$faseandamento,$primeirapagina){
+		if ($setorresponsavel==0){$setorresponsavel="NULL";}
+		if ($regiaoadministrativa==0){$regiaoadministrativa="NULL";}
+		if ($fiscal==0){$fiscal="NULL";}
+		if ($processo==0){$processo="NULL";}
+		if ($loteNr==0){$loteNr="NULL";}
+		if ($faseandamento==0){$faseandamento="NULL";}
+		if ($primeirapagina != 1){$primeirapagina="0";}
+		
+		$sql = "EXEC SituacaoDoLote $setorresponsavel,$fiscal,$regiaoadministrativa,$processo,$loteNr,$faseandamento,$primeirapagina";
+		
+		$query = $this->db->query($sql);
+		return $query->result();
+	}
+	
+	function pesquisaAditivos($LoteId){
+		$sql = "EXEC pesquisaAditivos $LoteId";
+		$query = $this->db->query($sql);
+		$dado['aditivosview'] = $query;
+		return $query->result();
+	}
+	
+	function pesquisaAndamentoLote($LoteId,$primeirapagina){
+		$sql = "EXEC pesquisaAndamentoLote $LoteId,$primeirapagina";
+		$query = $this->db->query($sql);
+		return $query->result();		
+	}
+}

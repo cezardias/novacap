@@ -1,0 +1,7 @@
+<?php
+class Model_situacaoobra extends Model {
+	function setorResponsavel(){
+		$query = $this->db->get('AuxOrganizacional');
+		return $query->result();
+	}
+}

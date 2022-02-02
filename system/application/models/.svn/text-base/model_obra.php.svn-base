@@ -1,0 +1,42 @@
+<?php
+class Model_obra extends Model {
+	
+	 function detail(){
+		$query = $this->db->get_where('Obras', array('Id' => $this->uri->segment(3)));
+		return $query->result();
+	}
+	
+ 	function detail2(){
+		$query = $this->db->get_where('Obras', array('Id' => $this->uri->segment(5)));
+		return $query->result();
+	}
+	
+	function add_record($data) {
+	//	$data['ObraFiscalId']= str_pad($data['ObraFiscalId'], 8, "0", STR_PAD_LEFT);
+		$this->db->insert('Obras', $data);
+		return;
+	}
+	
+	function get_records(){
+		$query = $this->db->get('Obras');
+		return $query->result();
+	}
+	//Lista Aditivos para gerar a tabelada página inicial
+	function listObra(){
+		$query = $this->db->get_where('Obras', array('ProcessoId' => $this->uri->segment(3),'LoteId' => $this->uri->segment(4)));
+		return $query->result();
+	}
+	
+	function delete_row(){
+		$this->db->where('id', $this->uri->segment(3));
+		$this->db->delete('Obras');
+		$redirecionamento = base_url()."obra/index/".$this->uri->segment(4)."/".$this->uri->segment(5);
+		redirect($redirecionamento);
+	}
+	
+	function update_record($data,$id){
+	//	$data['ObraFiscalId']= str_pad($data['ObraFiscalId'], 8, "0", STR_PAD_LEFT);
+		$this->db->where('id', $id);
+		$this->db->update('Obras', $data);
+	}	
+}

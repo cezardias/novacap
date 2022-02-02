@@ -1,0 +1,77 @@
+<?php
+class Model_movimentacaogeralrelatorio extends Model {
+
+	function report($processoNr,$loteNr,$obraDesc,$obraCidadeId,$faseAndamentoId1,$faseAndamentoId2,$empresaid,$diretoriaid,$setor,$licitacaostatusid,$processostatusid,$convenioexternoid,$orgaogestorid,$licitacaodata1,$licitacaodata2,$obrainicio1,$obrainicio2,$obrafim1,$obrafim2,$percexec1,$percexec2,$obravalor1,$obravalor2,$situacaoobra,$setorresponsavel,$matriculafiscal,$obraCategoriaId,$ciddefase){
+		if($processoNr == ""){$processoNr="NULL";}
+		if($loteNr == ""){$loteNr="NULL";}
+		if($obraDesc == ""){$obraDesc="NULL";}
+		if($obraCidadeId == 0){$obraCidadeId="NULL";}
+		if($obraCategoriaId == 0){$obraCategoriaId="NULL";}		
+		if($faseAndamentoId1 == 0){$faseAndamentoId1="NULL";}
+		if($faseAndamentoId2 == 0){$faseAndamentoId2="NULL";}
+		if($empresaid == ""){$empresaid="NULL";}
+		if($diretoriaid == 0){$diretoriaid="NULL";}
+		if($setor == 0){$setor="NULL";}
+		if($licitacaostatusid == 0){$licitacaostatusid="NULL";}
+		if($processostatusid == 0){$processostatusid="NULL";}
+		if($convenioexternoid == 0){$convenioexternoid="NULL";}
+		if($orgaogestorid == 0){$orgaogestorid="NULL";}
+		
+		if($licitacaodata1 == ""){$licitacaodata1="NULL";
+		}else{
+			$licitacaodata1 = "'".substr($licitacaodata1, 6, 4).substr($licitacaodata1, 3, 2).substr($licitacaodata1, 0, 2)."'";
+		}
+		
+		if($licitacaodata2 == ""){$licitacaodata2="NULL";
+		}else{
+			$licitacaodata2 = "'".substr($licitacaodata2, 6, 4).substr($licitacaodata2, 3, 2).substr($licitacaodata2, 0, 2)."'";
+		}
+
+		if($obrainicio1 == ""){$obrainicio1="NULL";
+		}else{
+			$obrainicio1 = "'".substr($obrainicio1, 6, 4).substr($obrainicio1, 3, 2).substr($obrainicio1, 0, 2)."'";
+		}
+
+		if($obrainicio2 == ""){$obrainicio2="NULL";
+		}else{
+			$obrainicio2 = "'".substr($obrainicio2, 6, 4).substr($obrainicio2, 3, 2).substr($obrainicio2, 0, 2)."'";
+		}
+
+		if($obrafim1 == ""){$obrafim1="NULL";
+		}else{
+			$obrafim1 = "'".substr($obrafim1, 6, 4).substr($obrafim1, 3, 2).substr($obrafim1, 0, 2)."'";
+		}
+
+		if($obrafim2 == ""){$obrafim2="NULL";
+		}else{
+			$obrafim2 = "'".substr($obrafim2, 6, 4).substr($obrafim2, 3, 2).substr($obrafim2, 0, 2)."'";
+		}
+		
+		if($percexec1 == ""){$percexec1="NULL";}
+		if($percexec2 == ""){$percexec2="NULL";}
+		
+		
+		if(($obravalor1 == 0)||($obravalor1=="")){
+			$obravalorpiclas1="NULL";
+		}
+		else {$obravalorpiclas1 = '$obravalor1';}
+		
+		if(($obravalor2 == 0)||($obravalor2=="")){
+			$obravalorpiclas2="NULL";
+		}
+		else {$obravalorpiclas2 = '$obravalor2';}
+		
+		if($situacaoobra == 0){$situacaoobra="NULL";}
+		if($setorresponsavel == 0){$setorresponsavel="NULL";}
+		
+		if($matriculafiscal == ""){$matriculafiscal="NULL";}
+		
+		//cidade ou fase
+		$sql = "exec MovimentacaoGeral $processoNr,$loteNr,$obraDesc,$obraCidadeId,$faseAndamentoId1,$faseAndamentoId2,$empresaid,$diretoriaid,$setor,$licitacaostatusid,$processostatusid,$convenioexternoid,$orgaogestorid,$licitacaodata1,$licitacaodata2,$obrainicio1,$obrainicio2,$obrafim1,$obrafim2, $percexec1,$percexec2,$obravalorpiclas1,$obravalorpiclas2,$situacaoobra,$setorresponsavel,$matriculafiscal,$obraCategoriaId,'$ciddefase'";
+		
+		//echo $sql;
+		
+		$query = $this->db->query($sql);
+		return $query->result();
+	}
+}

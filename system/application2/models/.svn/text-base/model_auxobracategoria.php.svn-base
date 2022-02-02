@@ -1,0 +1,22 @@
+<?php
+class Model_auxObraCategoria extends Model {
+	
+	public function getAuxObraCategoria(){
+		$this->db->order_by("Descricao", "asc");
+		$query=$this->db->get('AuxObraCategoria');
+		if($query->num_rows()>0){
+			return $query->result_array();
+		}
+	}
+	
+	function search($keyword){
+		
+		$categoria = iconv("UTF-8","ISO-8859-1",$keyword);
+		
+		$sql = "SELECT Id, Descricao FROM AuxObraCategoria
+				where Descricao like '%$categoria%'";
+		
+		$query = $this->db->query($sql);
+		return $query->result();
+	}
+}

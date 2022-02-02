@@ -1,0 +1,10 @@
+<?php
+class Model_AuxLicitacaoRegimeExecucao extends Model {
+	public function getAuxLicitacaoRegimeExecucao(){
+		$this->db->order_by("Descricao", "asc");
+		$query=$this->db->get('AuxLicitacaoRegimeExecucao');
+		if($query->num_rows()>0){
+			return $query->result_array();
+		}
+	}
+}

@@ -1,0 +1,35 @@
+<?php
+class Model_obraexecucao extends Model {
+	
+	 function detail(){
+		$query = $this->db->get_where('ObraExecucao', array('ObraId' => $this->uri->segment(5)));
+		return $query->result();
+	}
+	
+	function add_record($data) {
+		$this->db->insert('ObraExecucao', $data);
+		return;
+	}
+	
+	function get_records(){
+		$query = $this->db->get('ObraExecucao');
+		return $query->result();
+	}
+	//Lista Aditivos para gerar a tabelada página inicial
+	function listObra(){
+		$query = $this->db->get_where('ObraExecucao', array('ProcessoId' => $this->uri->segment(3),'LoteId' => $this->uri->segment(4)));
+		return $query->result();
+	}
+	
+	function delete_row(){
+		$this->db->where('id', $this->uri->segment(3));
+		$this->db->delete('ObraExecucao');
+		$redirecionamento = base_url()."obraexecucao/index/".$this->uri->segment(4)."/".$this->uri->segment(5)."/".$this->uri->segment(6);
+		redirect($redirecionamento);
+	}
+	
+	function update_record($data,$id) {
+		$this->db->where('id', $id);
+		$this->db->update('ObraExecucao', $data);
+	}	
+}

@@ -1,0 +1,124 @@
+<?php
+class Model_processo extends Model {
+	
+	function get_records(){
+		$query = $this->db->get('Processos');
+		return $query->result();
+	}
+
+	function add_record($data) {
+		$this->db->insert('Processos', $data);
+		return;
+	}
+
+	function update_record($data,$id) {
+		$this->db->where('id', $id);
+		$this->db->update('Processos', $data);
+	}
+
+	function delete_row(){
+		$this->db->where('id', $this->uri->segment(3));
+		$this->db->delete('Processos');
+		$redirecionamento = base_url()."processo/search/";
+		redirect($redirecionamento);
+	}
+
+	function detail(){
+		$query = $this->db->get_where('Processos', array('Id' => $this->uri->segment(3)));
+		return $query->result();
+	}
+		
+	function search($search,$nomeempresa,$idcidade,$descricaoprocessoobra,$fiscal,$numerocontrato,$diretoria,$statusProcesso,$perpage,$primeiroregistro){
+		$fiscal = str_pad($fiscal, 8, "0", STR_PAD_LEFT);
+		
+		$porpagina = $perpage;
+
+		if ($search == ''){$search = 'NULL';}
+		$nomeempresa = str_replace("'", "%", $nomeempresa);
+		if ($nomeempresa == ''){$nomeempresa = 'NULL';}else{$nomeempresa = "'$nomeempresa'";}
+		if ($idcidade == '0'){$idcidade = 'NULL';}
+		$descricaoprocessoobra = str_replace("'", "%", $descricaoprocessoobra);		
+		if ($descricaoprocessoobra == ''){$descricaoprocessoobra = 'NULL';}else{$descricaoprocessoobra = "'$descricaoprocessoobra'";}
+
+		if ($primeiroregistro == ''){
+			$primeiroregistro = 0;
+		}
+		if ($fiscal==0){$fiscal='NULL';}
+		if ($numerocontrato==0){$numerocontrato='NULL';}
+		if ($diretoria==0){$diretoria='NULL';}
+		if ($statusProcesso==0){$statusProcesso='NULL';}
+		
+		if ($fiscal == ''){
+			$fiscal = NULL;
+		}else{
+			if ($fiscal == 'NULL'){
+				$fiscal = 'NULL';
+			}else{
+				$fiscal = "'$fiscal'";
+			}
+		}
+		
+		$sql = "exec PesquisaInicial $search,$nomeempresa,$idcidade,$descricaoprocessoobra,$fiscal,$numerocontrato,$diretoria,$statusProcesso,$porpagina,$primeiroregistro";
+				
+		$query = $this->db->query($sql);
+	  
+		return $query->result();
+	}
+
+	function searchcaixaobras($keyword,$processoid){
+		if ($keyword == ''){$keyword = 'NULL';}
+		$sql = "EXEC pesquisaDescricaoObra '$keyword',$processoid";
+		$query = $this->db->query($sql);
+		return $query->result();
+	}
+	
+	function searchTotal($search,$nomeempresa,$idcidade,$descricaoprocessoobra,$fiscal,$numerocontrato,$diretoria,$statusProcesso){
+		
+		$fiscal = str_pad($fiscal, 8, "0", STR_PAD_LEFT);
+		
+		if ($search == ''){$search = 'NULL';}
+		$nomeempresa = str_replace("'", "%", $nomeempresa);
+		if ($nomeempresa == ''){$nomeempresa = 'NULL';}else{$nomeempresa = "'$nomeempresa'";}
+		if ($idcidade == '0'){$idcidade = 'NULL';}
+		$descricaoprocessoobra = str_replace("'", "%", $descricaoprocessoobra);
+		if ($descricaoprocessoobra == ''){$descricaoprocessoobra = 'NULL';}else{$descricaoprocessoobra = "'$descricaoprocessoobra'";}
+		if ($fiscal==0){$fiscal='NULL';}
+		if ($numerocontrato==0){$numerocontrato='NULL';}
+		if ($diretoria==0){$diretoria='NULL';}
+		if ($statusProcesso==0){$statusProcesso='NULL';}
+		
+		if ($fiscal == ''){
+			$fiscal = NULL;
+		}else{
+			if ($fiscal == 'NULL'){
+				$fiscal = 'NULL';
+			}else{
+				$fiscal = "'$fiscal'";
+			}
+		}
+		
+		$queryTotal = "exec pesquisainicialqtd $search,$nomeempresa,$idcidade,$descricaoprocessoobra,$fiscal,$numerocontrato,$diretoria,$statusProcesso";
+		$queryTotal = $this->db->query($queryTotal);
+		return $queryTotal->result();
+	}
+	
+	function show($perPage,$keyword,$primeiroRegistro){
+		$porPagina = $perPage;
+
+		if ($primeiroRegistro == ''){
+			$primeiroRegistro = 0; //TODO Verificar
+		}
+
+		if ($keyword == ''){
+			$primeiroRegistro = '@@'; //TODO Verificar
+		}
+	  
+		$sql = "select id, processonr, especificacaoprocesso, processostatusid from Processos where id in
+		(select top $porPagina id from Processos
+		WHERE processonr like '%$keyword%' and id not in 
+		(select top $primeiroRegistro id from Processos WHERE processonr like '%$keyword%'))";	    
+
+		$query = $this->db->query($sql);
+		return $query->result(); 
+	}
+}

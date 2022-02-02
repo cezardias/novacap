@@ -1,0 +1,10 @@
+<?php
+class Model_auxAditivoCategoria extends Model {
+	public function getAuxAditivoCategoria(){
+		$this->db->order_by("Descricao", "asc");
+		$query=$this->db->get('AuxAditivoCategoria');
+		if($query->num_rows()>0){
+			return $query->result_array();
+		}
+	}
+}

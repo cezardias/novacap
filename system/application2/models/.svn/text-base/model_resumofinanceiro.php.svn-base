@@ -1,0 +1,29 @@
+<?php
+class Model_resumofinanceiro extends Model {
+	
+	function detail(){
+
+		$lote = $this->uri->segment(4);
+		
+		$sql = "select top 1 * from Resumofinanceiro where LoteId = $lote";
+				
+		$query = $this->db->query($sql);
+	  
+		return $query->result();
+		
+//		$query = $this->db->get_where('ResumoFinanceiro', array('LoteId' => $this->uri->segment(4)));
+//		return $query->result();
+	}	
+
+	function aditivos(){
+		$lote = $this->uri->segment(4);
+		$sql = "select AditivoData,AditivoValor,VigenciaPrazo,ExecucaoPrazo,AditivoAutorizado from Resumofinanceiro where LoteId = $lote";
+		$query = $this->db->query($sql);
+		return $query->result();
+	}	
+	
+	function get_records(){
+		$query = $this->db->get('ResumoFinanceiro');
+		return $query->result();
+	}
+}

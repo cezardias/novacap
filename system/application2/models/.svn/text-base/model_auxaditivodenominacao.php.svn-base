@@ -1,0 +1,10 @@
+<?php
+class Model_auxAditivoDenominacao extends Model {
+	public function getAuxAditivoDenominacao(){
+		$this->db->order_by("Id", "asc");
+		$query=$this->db->get('AuxAditivoDenominacao');
+		if($query->num_rows()>0){
+			return $query->result_array();
+		}
+	}
+}

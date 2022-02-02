@@ -1,0 +1,15 @@
+<?php
+class Model_movimentacaoprocesso extends Model {
+	function sisprot(){
+        $parametro = $this->uri->segment(3);
+       
+        if ($parametro == NULL){
+            $parametro = "NULL";
+        }
+       
+        $sql = "exec MovimentoProcesso ".$parametro;
+
+        $query = $this->db->query($sql);
+        return $query->result();
+    }	
+}

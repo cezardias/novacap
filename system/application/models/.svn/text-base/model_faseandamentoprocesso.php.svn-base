@@ -1,0 +1,20 @@
+<?php
+class Model_faseandamentoprocesso extends Model {
+/*	function listFaturas(){
+		$query = $this->db->get_where('Faturas', array(
+			'ProcessoId' => $this->uri->segment(3),
+			'LoteId' => $this->uri->segment(4),
+			'OrdemDeServicoId' => $this->uri->segment(5)));
+		return $query->result();
+	}
+*/	
+	function add_record($data) {
+		$this->db->insert('FaseAndamentoProcesso', $data);
+		return;
+	}
+	
+	 function detail(){
+		$query = $this->db->get_where('FaseAndamentoProcesso', array('ProcessoId' => $this->uri->segment(3)));
+		return $query->result();
+	}
+}

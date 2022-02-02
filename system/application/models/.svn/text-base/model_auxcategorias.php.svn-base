@@ -1,0 +1,12 @@
+<?php
+class Model_auxcategorias extends Model {
+	
+	public function getAuxCategorias(){
+		$this->db->order_by("Descricao", "asc");
+		$query=$this->db->get('AuxCategoria');
+		if($query->num_rows()>0){
+			return $query->result_array();
+		}
+	}
+		
+}

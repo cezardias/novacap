@@ -1,0 +1,10 @@
+<?php
+class Model_AuxOrgaos extends Model {
+	public function getAuxOrgaos(){
+		$this->db->order_by("Sigla", "asc");
+		$query=$this->db->get('AuxOrgaos');
+		if($query->num_rows()>0){
+			return $query->result_array();
+		}
+	}
+}

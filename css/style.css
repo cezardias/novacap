@@ -1,0 +1,145 @@
+* {
+	font-family: Arial, Georgia, "Times New Roman", Times, serif;
+}
+
+/* -------------------------------------------------------------- 
+  
+   reset.css
+   * Resets default browser CSS.
+   
+   Based on work by Eric Meyer:
+   * meyerweb.com/eric/thoughts/2007/05/01/reset-reloaded/
+   
+-------------------------------------------------------------- */
+html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,code,del,dfn,em,img,q,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 12px;
+	font-family: inherit;
+	vertical-align: baseline;
+}
+
+/*body { line-height: 1.5; background: #fff; margin:1.5em 0; }*/
+body {
+	line-height: 1.5;
+	background: #fff;
+	margin: 0px;
+}
+
+/* Tables still need 'cellspacing="0"' in the markup. */
+table {
+	border-collapse: separate;
+	border-spacing: 0;
+}
+
+caption,th,td {
+	text-align: left;
+	font-weight: 400;
+}
+
+/* Remove possible quote marks (") from <q>, <blockquote>. */
+blockquote:before,blockquote:after,q:before,q:after {
+	content: "";
+}
+
+blockquote,q {
+	quotes: "" "";
+}
+
+a img {
+	border: none;
+}
+
+.wrapper {
+	margin-left: auto;
+	margin-right: auto;
+	width: 960px;
+}
+
+.headerFundo {
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+	height: 120px;
+	background-color: #1a519b;
+}
+
+.home :hover { /* Nome do sistema no cabeçalho */
+	color: #1a519b;
+	background-color:#fff;	
+	border-radius: 8px;/* definimos o quão arredondado irá ficar nosso box */
+	-moz-border-radius: 8px;/* Declaração para aparecer no Firefox */
+	-webkit-border-radius: 8px;/* Para exibir nos outros navegadores como Chrome, safari, opera*/
+}
+
+.header {
+	margin-left: auto;
+	margin-right: auto;
+	width: 960px;
+	height: 120px;
+	background-color: #1a519b;
+	background-image: url('../img/backgroundTopo2.gif');
+}
+
+.footer {
+	border-top: 2px #f0f0f0 solid;
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+	height: 120px;
+	background-color: #fff;
+}
+
+.headerLogoNovacap {
+	padding-top: 15px;
+	padding-left: 20px;
+	width: 700px;
+	height: 60px;
+	display: inline;
+	float: left;
+	position: relative;
+	margin-left: 0px;
+	margin-right: 0px;
+	color: #fff;
+}
+
+.siglaSis {
+	font-size: 36px;
+	font-weight: bold;
+}
+
+.descricaoSis {
+	font-size: 16px;
+}
+
+.headerLogoNovacap2 {
+	width: 200px;
+	height: 60px;
+	display: inline;
+	float: left;
+	position: relative;
+	margin-top: 25px;
+	margin-left: 0px;
+	margin-right: 0px;
+	color: #fff;
+}
+
+.50percent {
+	width: 480px;
+	display: inline;
+	float: left;
+	position: relative;
+	margin-left: 0px;
+	margin-right: 0px;
+	background-color: #ff6600;
+}
+
+fieldset.visible {
+	margin: 5px 0px;
+	border: 1px solid #ccc;
+	padding: 5px 10px;
+	width: 700px;
+}

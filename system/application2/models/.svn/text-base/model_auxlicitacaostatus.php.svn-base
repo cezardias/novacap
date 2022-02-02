@@ -1,0 +1,10 @@
+<?php
+class Model_AuxLicitacaoStatus extends Model {
+	public function getauxLicitacaoStatus(){
+		$this->db->order_by("Descricao", "asc");
+		$query=$this->db->get('AuxLicitacaoStatus');
+		if($query->num_rows()>0){
+			return $query->result_array();
+		}
+	}
+}

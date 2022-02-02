@@ -1,0 +1,21 @@
+<?php
+class Model_funcionario extends Model {
+
+	public function getFiscal(){
+		$this->db->order_by("Nome", "asc");
+		$query=$this->db->get('Servidores');
+		if($query->num_rows()>0){
+			return $query->result_array();
+		}
+	}
+
+	function search($keyword){
+		
+		//$fiscal = iconv("UTF-8","ISO-8859-1",$keyword);
+		
+		$sql = "SELECT Id, Nome, Matricula FROM Servidores where Nome like '%$keyword%'";
+
+		$query = $this->db->query($sql);
+		return $query->result();
+	}
+}

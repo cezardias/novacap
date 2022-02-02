@@ -1,0 +1,22 @@
+<?php
+class Model_empresa extends Model {
+
+	public function getEmpresa(){
+		$this->db->order_by("EmpresaRazaoSocial", "asc");
+		$query=$this->db->get('Empresas');
+		if($query->num_rows()>0){
+			return $query->result_array();
+		}
+	}
+
+	function search($keyword){
+		
+		$empresa = iconv("UTF-8","ISO-8859-1",$keyword);
+		
+		$sql = "SELECT Id, EmpresaRazaoSocial FROM Empresas
+				where EmpresaRazaoSocial like '%$empresa%'";
+		
+		$query = $this->db->query($sql);
+		return $query->result();
+	}
+}

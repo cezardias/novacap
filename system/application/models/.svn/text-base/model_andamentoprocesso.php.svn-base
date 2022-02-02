@@ -1,0 +1,37 @@
+<?php
+class Model_andamentoprocesso extends Model {
+	
+	 function detail(){
+		$query = $this->db->get_where('FaseAndamentoProcesso', array('Id' => $this->uri->segment(3)));
+		return $query->result();
+	}
+	
+	function detail2(){
+		$query = $this->db->get_where('FaseAndamentoProcesso', array('ProcessoId' => $this->uri->segment(3), 'Id' => $this->uri->segment(4)));
+		return $query->result();
+	}
+	
+	function add_record($data) {
+		$this->db->insert('FaseAndamentoProcesso', $data);
+		return;
+	}
+
+	//Lista Aditivos para gerar a tabelada página inicial
+	function listAndamentoprocesso(){
+		$query = $this->db->order_by("FaseAndamentoData", "desc"); 
+		$query = $this->db->get_where('FaseAndamentoProcesso', array('ProcessoId' => $this->uri->segment(3)));
+		return $query->result();
+	}
+	
+	function delete_row(){
+		$this->db->where('Id', $this->uri->segment(3));
+		$this->db->delete('FaseAndamentoProcesso');
+		$redirecionamento = base_url()."andamentoprocesso/index/".$this->uri->segment(4);
+		redirect($redirecionamento);
+	}
+	
+	function update_record($data,$id) {
+		$this->db->where('Id', $id);
+		$this->db->update('FaseAndamentoProcesso', $data);
+	}	
+}

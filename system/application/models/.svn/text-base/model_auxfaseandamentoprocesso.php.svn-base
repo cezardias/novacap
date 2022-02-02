@@ -1,0 +1,10 @@
+<?php
+class Model_auxFaseAndamentoProcesso extends Model {
+	public function getAuxFaseAndamentoProcesso(){
+		$this->db->order_by("Id", "asc");
+		$query=$this->db->get('AuxFaseAndamentoProcesso');
+		if($query->num_rows()>0){
+			return $query->result_array();
+		}
+	}
+}

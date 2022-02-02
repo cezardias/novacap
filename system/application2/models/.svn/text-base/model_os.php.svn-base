@@ -1,0 +1,40 @@
+<?php
+class Model_os extends Model {
+	
+	 function detail(){
+		$query = $this->db->get_where('OrdensDeServico', array('Id' => $this->uri->segment(3)));
+		return $query->result();
+	}
+
+	 function detailOsFatura(){
+		$query = $this->db->get_where('OrdensDeServico', array('Id' => $this->uri->segment(5)));
+		return $query->result();
+	}	
+	
+	function get_records(){
+		$query = $this->db->get('OrdensDeServico');
+		return $query->result();
+	}	
+	
+	function add_record($data) {
+		$this->db->insert('OrdensDeServico', $data);
+		return;
+	}
+	
+	function listOs(){
+		$query = $this->db->get_where('OrdensDeServico', array('ProcessoId' => $this->uri->segment(3),'LoteId' => $this->uri->segment(4)));
+		return $query->result();
+	}
+	
+	function delete_row(){
+		$this->db->where('id', $this->uri->segment(3));
+		$this->db->delete('OrdensDeServico');
+		$redirecionamento = base_url()."os/index/".$this->uri->segment(4)."/".$this->uri->segment(5);
+		redirect($redirecionamento);
+	}
+	
+	function update_record($data,$id) {
+		$this->db->where('id', $id);
+		$this->db->update('OrdensDeServico', $data);
+	}
+}

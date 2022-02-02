@@ -1,0 +1,10 @@
+<?php
+class Model_AuxContratoGarantia extends Model {
+	public function getAuxContratoGarantia(){
+		$this->db->order_by("Descricao", "asc");
+		$query=$this->db->get('AuxContratoGarantia');
+		if($query->num_rows()>0){
+			return $query->result_array();
+		}
+	}
+}

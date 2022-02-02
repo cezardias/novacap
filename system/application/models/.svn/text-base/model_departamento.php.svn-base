@@ -1,0 +1,11 @@
+<?php
+class Model_departamento extends Model {
+	public function getDepartamentos(){
+		$this->db->where('DiretoriaVinculada !=', '');
+		$this->db->order_by("Sigla", "asc");
+		$query=$this->db->get('AuxOrganizacional');
+		if($query->num_rows()>0){
+			return $query->result_array();
+		}
+	}
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>Cross browser javascript calendar</title>
+
+<style type="text/css">
+body { /*
+		You can remove these four options 
+		
+		*/
+	background-repeat: no-repeat;
+	font-family: Trebuchet MS, Lucida Sans Unicode, Arial, sans-serif;
+	margin: 0px;
+}
+
+#ad {
+	padding-top: 220px;
+	padding-left: 10px;
+}
+
+img {
+	border: 0px;
+}
+</style>
+<link type="text/css" rel="stylesheet" href="dhtmlgoodies_calendar.css"
+	media="screen"></LINK>
+<SCRIPT type="text/javascript" src="dhtmlgoodies_calendar.js"></script>
+
+</head>
+<body>
+<form>
+<table>
+	<tr>
+		<td>Selecione a data e a Hora:</td>
+		<td>
+		<td><input type="text" value="25/06/2010 02:55" name="theDate3">
+		<input type="button" value="Cal"
+			onclick="displayCalendar(document.forms[0].theDate3,'dd/mm/yyyy  hh:ii',this,true)">
+		</td>
+	</tr>
+
+</table>
+</body>
+</html>

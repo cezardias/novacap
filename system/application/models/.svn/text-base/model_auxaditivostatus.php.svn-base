@@ -1,0 +1,10 @@
+<?php
+class Model_auxAditivoStatus extends Model {
+	public function getAuxAditivoStatus(){
+		$this->db->order_by("Descricao", "asc");
+		$query=$this->db->get('AuxAditivoStatus');
+		if($query->num_rows()>0){
+			return $query->result_array();
+		}
+	}
+}

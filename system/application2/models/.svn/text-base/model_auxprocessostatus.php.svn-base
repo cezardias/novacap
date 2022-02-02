@@ -1,0 +1,10 @@
+<?php
+class Model_AuxProcessoStatus extends Model {
+	public function getAuxProcessoStatus(){
+		$this->db->order_by("Descricao", "asc");
+		$query=$this->db->get('AuxProcessoStatus');
+		if($query->num_rows()>0){
+			return $query->result_array();
+		}
+	}
+}

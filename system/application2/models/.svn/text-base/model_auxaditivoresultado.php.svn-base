@@ -1,0 +1,10 @@
+<?php
+class Model_auxAditivoResultado extends Model {
+	public function getAuxAditivoResultado(){
+		$this->db->order_by("Descricao", "asc");
+		$query=$this->db->get('AuxAditivoResultado');
+		if($query->num_rows()>0){
+			return $query->result_array();
+		}
+	}
+}

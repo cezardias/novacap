@@ -1,0 +1,13 @@
+<?php
+class Model_sisprot extends Model {
+
+	function detail(){
+		$query = $this->db->get('SincronizaProtocolo');
+		return $query->result();
+	}
+	
+	function sincroniza(){
+		$query = $this->db->get_where('SincronizaProtocolo', array('ProcessoId' => $this->uri->segment(3)));
+		return $query->result();
+	}
+}

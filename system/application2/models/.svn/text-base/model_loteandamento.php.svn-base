@@ -1,0 +1,47 @@
+<?php
+class Model_loteandamento extends Model {
+	
+	function detail(){
+		//$this->db->orderby("Data", "desc");
+		//$query = $this->db->get_where('FaseAndamentoObras', array('ObraId' => $this->uri->segment(5)));
+		$parametroSegmento = $this->uri->segment(4);
+	 	$sql = "select Id, LoteId, ProcessoId, Data, convert(text,Descricao) as Descricao,PercentualExecutado from FaseAndamentoLote where LoteId = $parametroSegmento order by Data desc";
+		$query = $this->db->query($sql);
+		return $query->result();
+	}
+ 	
+	function add_record($data) {
+		$this->db->insert('FaseAndamentoLote', $data);
+		return;
+	}
+	
+	function get_records(){
+		$query = $this->db->get('FaseAndamentoLote');
+		return $query->result();
+	}	
+	
+	function edit(){
+		$parametroSegmento3 = $this->uri->segment(3);
+		$parametroSegmento4 = $this->uri->segment(4);
+		
+	 	$sql = "select Id, LoteId, ProcessoId, Data, convert(text,Descricao) as Descricao,PercentualExecutado from FaseAndamentoLote where LoteId = $parametroSegmento3 and Id = $parametroSegmento4";
+		$query = $this->db->query($sql);
+		return $query->result();
+		
+		//$query = $this->db->get_where('FaseAndamentoObras', array('ObraId' => $this->uri->segment(3),'Id' => $this->uri->segment(4)));
+		//return $query->result();
+	}	
+	
+	function delete_row(){	
+		$this->db->where('id', $this->uri->segment(3));
+		$this->db->delete('FaseAndamentoLote');
+		$redirecionamento = base_url()."loteandamento/add/".$this->uri->segment(4)."/".$this->uri->segment(5);
+		redirect($redirecionamento);
+	}
+
+	function update_record($data,$id) {
+		$this->db->where('Id', $id);
+		$this->db->update('FaseAndamentoLote', $data);
+	}	
+	
+}

@@ -1,0 +1,10 @@
+<?php
+class Model_AuxFaturaLancamentoTipo extends Model {
+	public function getAuxFaturaLancamentoTipo(){
+		$this->db->order_by("Descricao", "asc");
+		$query=$this->db->get('AuxFaturaLancamentoTipo');
+		if($query->num_rows()>0){
+			return $query->result_array();
+		}
+	}
+}
